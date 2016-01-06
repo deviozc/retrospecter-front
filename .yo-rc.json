@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "retrospecterFront",
+    "style": "css",
+    "postcss": true
+  }
+}
