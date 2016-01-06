@@ -11,9 +11,11 @@ class AppComponent extends React.Component {
 
       <div className="index">
         <ul>
+          <li><Link to="/">Home</Link></li>
           <li><Link to="/team">Team</Link></li>
-          <li><Link to="/board">Board</Link></li>
+          <li><Link to="/about">about</Link></li>
         </ul>
+        {this.props.children}
       </div>
     );
   }

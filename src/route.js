@@ -11,16 +11,16 @@ import Index from './components/Index';
 class RetroRoute extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
+      <Router>
         <Route path='/' component={App}>
           <IndexRoute component={Index} />
-          <Route path='/about' component={Team} />
-        </Route>
-        <Route path='/team' component={Team}>
-          <Route path='/team/:id' component={Team} />
-        </Route>
-        <Route path='/board' component={Board}>
-          <Route path='/board/:id' component={Board} />
+          <Route path='about' component={Team} />
+          <Route path='team' component={Team}>
+            <Route path='team/:id' component={Team} />
+          </Route>
+          <Route path='/board' component={Board}>
+            <Route path='/board/:id' component={Board} />
+          </Route>
         </Route>
       </Router>
     );
