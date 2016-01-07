@@ -16,7 +16,6 @@ let getStateFromStore = () => {
       state[item.category] = [item]
     }
   }
-  console.log(state);
 
   return state;
 };
@@ -31,24 +30,23 @@ let Category = React.createClass({
   }
 });
 
-class Board extends React.Component {
-  constructor() {
-    super();
+let Board = React.createClass({
 
-    this.state = {};
-  }
+  getInitialState() {
+
+  },
 
   componentDidMount() {
     ItemStore.addChangeListener(this._onChange);
-  }
+  },
 
   componentWillUnmount() {
     ItemStore.removeChangeListener(this._onChange);
-  }
+  },
 
   _onChange() {
     this.setState(getStateFromStore());
-  }
+  },
 
   render() {
     return (
@@ -61,6 +59,6 @@ class Board extends React.Component {
       </div>
     )
   }
-}
+});
 
 export default Board

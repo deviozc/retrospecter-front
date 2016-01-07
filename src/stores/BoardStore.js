@@ -3,7 +3,7 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
-let _boards = null;
+let _boards = [];
 
 class BoardStore extends EventEmitter {
   addChangeListener(fn) {

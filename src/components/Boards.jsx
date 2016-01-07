@@ -10,12 +10,13 @@ require('styles//Board.css');
 class Item extends React.Component {
   render() {
     return (
-      <li><button type="submit" onClick={this.fetchBoards.bind(this)}>{this.props.data.name}</button></li>
+      <li><a href={'/#/boards/' + this.props.id}>{this.props.data.name}</a></li>
     );
   }
 
   fetchBoards(event) {
     event.preventDefault();
+    this.navigate('/#/boards/' + this.props.key);
   }
 };
 
@@ -25,27 +26,25 @@ let getStateFromStore = () => {
   };
 }
 
-class Boards extends React.Component {
-  constructor() {
-    super();
+let Boards = React.createClass({
 
-    this.state = {
-      boards: []
-    };
-  }
+  getInitialState: function() {
+    return getStateFromStore();
+  },
 
   componentDidMount() {
-    BoardStore.addChangeListener(this._onChange.bind(this));
+    BoardStore.addChangeListener(this._onChange);
     BoardActionsCreator.getBoards('some_id');
-  }
+  },
 
   componentWillUnmount() {
-    BoardStore.removeChangeListener(this._onChange.bind(this));
-  }
+    BoardStore.removeChangeListener(this._onChange);
+  },
 
   _onChange() {
+    console.log('onchange')
     this.setState(getStateFromStore());
-  }
+  },
 
   render() {
     return (
@@ -59,7 +58,7 @@ class Boards extends React.Component {
       </div>
     );
   }
-}
+});
 
 Boards.displayName = 'BoardsComponent';
 
