@@ -14,11 +14,12 @@ class TeamComponent extends React.Component {
   }
   componentDidMount() {
     teamStore.on(teamConstants.GET_TEAMS, function(){
-      console.log(teamStore.getTeams());
       this.setState({teams: JSON.stringify(teamStore.getTeams())});
     }.bind(this));
     teamAction.getTeams();
-
+  }
+  componentWillUnmount() {
+    ItemStore.removeChangeListener(teamConstants.GET_TEAMS);
   }
   render() {
     var teams = this.state.teams;

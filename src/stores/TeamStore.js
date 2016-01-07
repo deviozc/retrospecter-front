@@ -12,6 +12,9 @@ var teamStore = {
   emit: function(event) {
     eventEmitter.emit(event);
   },
+  removeListener: function(event, callback) {
+      eventEmitter.removeListener(event, callback);
+  },
   getTeams: function(){
     return teams;
   }

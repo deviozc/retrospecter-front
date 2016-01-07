@@ -1,12 +1,12 @@
 'use strict';
 var dispatcher = require('../dispatchers/AppDispatcher');
 var teamConstants = require('../constants/team-constants');
+var appConstants = require('../constants/app-constants');
 var teamSource = require('../sources/TeamSource');
 var teamAction = {
   getTeams: function(){
     teamSource.getTeams()
     .then(function(response){
-      console.log(response);
       if(response.status === 200){
         return response.json();
       }
@@ -17,8 +17,8 @@ var teamAction = {
       });
     }).catch(function(err){
       dispatcher.dispatch({
-        actionType: teamConstants.GET_TEAMS,
-        teams: err
+        actionType: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
+        err: err
       });
     });
   }
