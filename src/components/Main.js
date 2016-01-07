@@ -14,6 +14,7 @@ class AppComponent extends React.Component {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/team">Team</Link></li>
           <li><Link to="/about">about</Link></li>
+          <li><Link to="/boards">Board</Link></li>
         </ul>
         {this.props.children}
       </div>
