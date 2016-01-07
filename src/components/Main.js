@@ -9,37 +9,35 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="body">
-
-      <div id="nav-bar"></div>
-      <a id="menu-toggle" href="#" className="btn btn-dark btn-lg toggle"><i className="fa fa-bars"></i></a>
-      <nav id="sidebar-wrapper">
+        <div id="nav-bar"></div>
+        <a id="menu-toggle" href="#" className="btn btn-dark btn-lg toggle"><i className="fa fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
           <ul className="sidebar-nav">
-              <a id="menu-close" href="#" className="btn btn-light btn-lg pull-right toggle"><i className="fa fa-times"></i></a>
-              <li className="sidebar-brand">
-                  <a href="#top">Start Tool</a>
-              </li>
-              <li>
-                  <a href="#top">Start</a>
-              </li>
-              <li>
-                  <a href="#create_team">Team Directory</a>
-              </li>
-              <li>
-                  <a href="#team">Team Page</a>
-              </li>
-              <li>
-                  <a href="#boardPage">Board Page</a>
-              </li>
-              <li>
-                  <a href="#summary">Summary</a>
-              </li>
-              <li>
-                  <a href="#footer">Credit</a>
-              </li>
+            <a id="menu-close" href="#" className="btn btn-light btn-lg pull-right toggle"><i className="fa fa-times"></i></a>
+            <li className="sidebar-brand">
+              <a href="#top">Start Tool</a>
+            </li>
+            <li>
+              <a href="#top">Start</a>
+            </li>
+            <li>
+              <a href="#create_team">Team Directory</a>
+            </li>
+            <li>
+              <Link to="/teams">Teams</Link>
+            </li>
+            <li>
+              <Link to="/boards">Boards</Link>
+            </li>
+            <li>
+              <a href="#summary">Summary</a>
+            </li>
+            <li>
+              <a href="#footer">Credit</a>
+            </li>
           </ul>
-      </nav>
-
-        {this.props.children}
+        </nav>
+      {this.props.children}
       </div>
     );
   }
