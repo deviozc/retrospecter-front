@@ -3,7 +3,9 @@
 var EventEmitter = require('eventemitter3');
 var eventEmitter = new EventEmitter();
 var teamConstants = require('../constants/team-constants');
-var dispatcher = require('../dispatchers/AppDispatcher');
+
+import AppDispatcher from '../dispatchers/AppDispatcher';
+
 var teams;
 var teamStore = {
   on: function(event, callback) {
@@ -19,7 +21,7 @@ var teamStore = {
     return teams;
   }
 };
-dispatcher.register(
+AppDispatcher.register(
   function(action) {
     switch (action.actionType) {
       case teamConstants.GET_TEAMS:
