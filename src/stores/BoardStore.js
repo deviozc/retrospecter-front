@@ -23,16 +23,17 @@ class BoardStore extends EventEmitter {
   }
 }
 
-BoardStore.dispatchToken = AppDispatcher.register((action) => {
+let boardStore = new BoardStore();
+
+boardStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
     case 'FETCH_BOARDS':
       _boards = action.boards;
-      BoardStore.emitChange();
+      boardStore.emitChange();
       break;
     default:
-      break;
     }
 });
 
 
-export default new BoardStore();
+export default boardStore;

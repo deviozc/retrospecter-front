@@ -2,29 +2,49 @@
 
 import React from 'react';
 
+import BoardActionsCreator from '../actions/BoardActionsCreator';
+import BoardStore from '../stores/BoardStore';
+
 require('styles//Board.css');
 
-let Item = React.createClass({
+class Item extends React.Component {
   render() {
     return (
-      <li>{this.props.name}</li>
+      <li><button type="submit" onClick={this.fetchBoards.bind(this)}>{this.props.data.name}</button></li>
     );
   }
-});
+
+  fetchBoards(event) {
+    event.preventDefault();
+  }
+};
+
+let getStateFromStore = () => {
+  return {
+    boards: BoardStore.getAll()
+  };
+}
 
 class Boards extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      results: []
+      boards: []
     };
   }
 
   componentDidMount() {
-    this.setState({
-      results: ['a','b']
-    });
+    BoardStore.addChangeListener(this._onChange.bind(this));
+    BoardActionsCreator.getBoards('some_id');
+  }
+
+  componentWillUnmount() {
+    BoardStore.removeChangeListener(this._onChange.bind(this));
+  }
+
+  _onChange() {
+    this.setState(getStateFromStore());
   }
 
   render() {
@@ -32,8 +52,8 @@ class Boards extends React.Component {
       <div className="boards-component">
         Please edit src/components///BoardComponent.js to update this component!
         <ul>
-          {this.state.results.map((result, index) => {
-            return <Item key={index} name={result} />
+          {this.state.boards.map((result) => {
+            return <Item key={result.id} id={result.id} data={result} />
           })}
         </ul>
       </div>

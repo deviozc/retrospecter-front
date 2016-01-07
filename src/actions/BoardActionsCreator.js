@@ -4,7 +4,8 @@ import AppDispatcher from '../dispatchers/AppDispatcher';
 
 let mockBoards = [
   {
-    type: 'good',
+    teamId: 'abc',
+    id: 'some_id',
     name: 'something'
   }
 ];

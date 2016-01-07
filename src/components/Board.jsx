@@ -10,17 +10,34 @@ let getStateFromStore = () => {
   let items = ItemStore.getAll();
 
   for (let item of items) {
-    if (state[item.type]) {
-      state[item.type].push(item);
+    if (state[item.category]) {
+      state[item.category].push(item);
     } else {
-      state[item.type] = [item]
+      state[item.category] = [item]
     }
   }
+  console.log(state);
 
   return state;
 };
 
+let Category = React.createClass({
+  render() {
+    return (
+      <div>
+        {this.props.data}
+      </div>
+    )
+  }
+});
+
 class Board extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {};
+  }
+
   componentDidMount() {
     ItemStore.addChangeListener(this._onChange);
   }
@@ -36,6 +53,11 @@ class Board extends React.Component {
   render() {
     return (
       <div className="board-item-component">
+        Hello
+        {Object.keys(this.state).map((key) => {
+          console.log('hi');
+          <Category key={key} data={this.state[key]} />
+        })}
       </div>
     )
   }
