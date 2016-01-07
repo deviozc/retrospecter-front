@@ -9,9 +9,18 @@ var HEADERS = {
 };
 
 var teamSource = {
-  getTeams: function(cb){
-    return fetch('http://localhost:8080/teams');
-    // return fetch(API_URL + '/teams');
+  getTeams: function(){
+    // return fetch('http://localhost:8080/teams');
+    return fetch(API_URL + '/teams');
+  },
+  createTeam: function(team){
+    return fetch(API_URL + '/teams', {
+      method: 'post',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: team
+    });
   }
 };
 

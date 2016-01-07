@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = Object.freeze({
-    APP_URL: 'http://localhost'
+    API_URL: 'http://localhost:8080'
 });
