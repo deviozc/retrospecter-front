@@ -1,30 +1,34 @@
 'use strict';
 
-var appConstants = require('../constants/app-constants');
+import util from 'util';
+import request from 'reqwest';
 
-var API_URL = appConstants.API_URL;
+import AppDispatcher from '../dispatchers/AppDispatcher';
+import appConstants from '../constants/app-constants';
 
-var HEADERS = {
-    Accept: 'application/json'
-};
-
-var boardSource = {
-  getBoards: function(teamID){
-    return fetch(API_URL + '/teams/' + teamID + '/boards');
+export default {
+  getBoard() {
+    return Promise.reject(new Error('needs to be implemented'));
   },
-  createBoards: function(teamID, board){
-    return fetch(API_URL + '/teams/' + teamID + '/boards', {
-      method: 'post',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: board
+
+  createBoard() {
+    return Promise.reject(new Error('needs to be implemented'));
+  },
+
+  getBoards(teamId) {
+    return new Promise((resolve, reject) => {
+      return request({
+        url: util.format('http://localhost:8080/teams/%s/boards', teamId),
+        crossOrigin: true,
+        type: 'json',
+        method: 'GET',
+        success: (body) => {
+          resolve(body);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      })
     });
-  },
-  getBoard: function(teamID, boardID){
-    // return fetch('http://localhost:8080/teams');
-    return fetch(API_URL + '/teams/' + teamID + '/boards/' + boardID);
   }
-};
-
-module.exports = boardSource;
+}
