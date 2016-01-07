@@ -3,12 +3,30 @@
 import React from 'react';
 
 require('styles/Team.css');
+var teamStore = require('../stores/TeamStore');
+var teamConstants = require('../constants/team-constants');
+var teamAction = require('../actions/TeamAction');
 
 class TeamComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {teams: []};
+  }
+  componentDidMount() {
+    teamStore.on(teamConstants.GET_TEAMS, function(){
+      console.log(teamStore.getTeams());
+      this.setState({teams: JSON.stringify(teamStore.getTeams())});
+    }.bind(this));
+    teamAction.getTeams();
+
+  }
   render() {
+    var teams = this.state.teams;
+
     return (
       <div className="team-component">
-        Please edit src/components///TeamComponent.js to update this component!
+        {teams}
+        Team page!
       </div>
     );
   }

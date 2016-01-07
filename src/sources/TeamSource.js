@@ -1,7 +1,6 @@
 'use strict';
 
-var request = require('request');
-var appConstants = require('constants/app-constants');
+var appConstants = require('../constants/app-constants');
 
 var API_URL = appConstants.API_URL;
 
@@ -10,10 +9,9 @@ var HEADERS = {
 };
 
 var teamSource = {
-  getTeams: function(){
-    request.get(API_URL + /teams, function(err, response, body){
-      console.log(body);
-    });
+  getTeams: function(cb){
+    return fetch('http://localhost:8080/teams');
+    // return fetch(API_URL + '/teams');
   }
 };
 

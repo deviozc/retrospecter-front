@@ -11,7 +11,7 @@ import Index from './components/Index';
 class RetroRoute extends Component {
   render() {
     return (
-      <Router>
+      <Router history={browserHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={Index} />
           <Route path='about' component={Team} />
