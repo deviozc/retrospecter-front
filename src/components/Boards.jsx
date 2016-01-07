@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import Board from './board';
 
 require('styles//Board.css');
 
@@ -23,11 +22,9 @@ class Boards extends React.Component {
   }
 
   componentDidMount() {
-    console.log("did mount")
     this.setState({
       results: ['a','b']
     });
-    console.log(this.state);
   }
 
   render() {
@@ -35,8 +32,8 @@ class Boards extends React.Component {
       <div className="boards-component">
         Please edit src/components///BoardComponent.js to update this component!
         <ul>
-          {this.state.results.map((result) => {
-            return <Item name={result} />
+          {this.state.results.map((result, index) => {
+            return <Item key={index} name={result} />
           })}
         </ul>
       </div>

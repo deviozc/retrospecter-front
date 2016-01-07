@@ -17,11 +17,11 @@ class RetroRoute extends Component {
           <IndexRoute component={Index} />
           <Route path='about' component={Team} />
           <Route path='team' component={Team}>
-            <Route path='team/:id' component={Team} />
+            <Route path='/team/:id' component={Team} />
           </Route>
           <Route path='boards' component={Boards}>
-            <Route path='boards/:id' component={Board} />
           </Route>
+          <Route path='/boards/:id' component={Board} />
         </Route>
       </Router>
     );
