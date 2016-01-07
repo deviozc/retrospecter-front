@@ -40,16 +40,24 @@ let Boards = React.createClass({
   },
 
   render() {
-    return (
-      <div className="boards-component">
-        Please edit src/components///BoardComponent.js to update this component!
-        <ul>
-          {this.state.boards.map((result) => {
-            return <BoardItem key={result.id} id={result.id} data={result} />
-          })}
-        </ul>
-      </div>
-    );
+    if (!this.state.boards.length) {
+      return (
+        <div className="boards-component">
+          No Board Items
+        </div>
+      )
+    } else {
+      return (
+        <div className="boards-component">
+          Please edit src/components///BoardComponent.js to update this component!
+          <ul>
+              {this.state.boards.map((result) => {
+                return <BoardItem key={result.id} id={result.id} data={result} />
+              })}
+          </ul>
+        </div>
+      );
+    }
   }
 });
 

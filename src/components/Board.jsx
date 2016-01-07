@@ -51,9 +51,7 @@ let Board = React.createClass({
   render() {
     return (
       <div className="board-item-component">
-        Hello
         {Object.keys(this.state).map((key) => {
-          console.log('hi');
           <Category key={key} data={this.state[key]} />
         })}
       </div>
