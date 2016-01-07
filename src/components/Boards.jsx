@@ -28,7 +28,7 @@ let Boards = React.createClass({
 
   componentDidMount() {
     BoardStore.addChangeListener(this._onChange);
-    BoardActionsCreator.getBoards('some_id');
+    BoardActionsCreator.getBoards('41224d776a326fb40f000001');
   },
 
   componentWillUnmount() {
