@@ -38,7 +38,7 @@ let BoardItem = React.createClass({
 
           <p>Date: Jan 6, 2016</p>
 
-          <p>Peroid: 1 hrs</p>
+          <p>Period: 1 hrs</p>
           <a href={'/#/boards/' + this.props.id} className="btn btn-dark">More Info</a>
         </div>
       </div>
@@ -64,7 +64,23 @@ let getStateFromStore = () => {
       },
       {
         id: 'abc4',
-        name: 'test4'
+        name: 'test5'
+      },
+      {
+        id: 'abc5',
+        name: 'test5'
+      },
+      {
+        id: 'abc6',
+        name: 'test6'
+      },
+      {
+        id: 'abc7',
+        name: 'test7'
+      },
+      {
+        id: 'abc8',
+        name: 'test8'
       }
     ]
   };
