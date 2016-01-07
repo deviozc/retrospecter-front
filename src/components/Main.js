@@ -38,7 +38,7 @@ class AppComponent extends React.Component {
               </li>
           </ul>
       </nav>
-      
+
         {this.props.children}
       </div>
     );

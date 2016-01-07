@@ -5,6 +5,7 @@ body{
   height:100%;
 }
 .body {
+  width:calc(100% - 250px);
   height: 100vh;
   position: relative;
 }
@@ -107,7 +108,7 @@ hr.small {
 
 #sidebar-wrapper {
     z-index: 1000;
-    position: fixed;
+    position: absolute;
     right: 0;
     width: 250px;
     height: 100%;
