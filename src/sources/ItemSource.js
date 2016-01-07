@@ -1,6 +1,7 @@
 'use strict';
 
-var appConstants = require('../constants/app-constants');
+import request from 'reqwest';
+import appConstants from '../constants/app-constants';
 
 var API_URL = appConstants.API_URL;
 
@@ -8,28 +9,39 @@ var HEADERS = {
     Accept: 'application/json'
 };
 
-var itemSource = {
-  getItems: function(teamID, boardID){
-    return fetch(API_URL + '/teams/' + teamID + '/boards/' + boardID + '/items');
-  },
-  createItem: function(teamID, boardID, item){
-    return fetch(API_URL + '/teams/' + teamID + '/boards/' + boardID, {
-      method: 'post',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: item
+export default {
+  getItems(teamId, boardId) {
+    return new Promise((resolve, reject) {
+      return request({
+        url: util.format('%s/teams/%s/boards/%s/items', API_URL, teamId, boardId),
+        method: 'GET',
+        crossOrigin: true,
+        type: 'json',
+        success: (body) => {
+          resolve(body);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
     });
   },
-  createTeam: function(team){
-    return fetch(API_URL + '/teams/' + teamID + '/boards/' + boardID + '/items', {
-      method: 'post',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: team
+
+  createItem(teamId, boardId, item) {
+    return new Promise((resolve, reject) => {
+      return request({
+        url: util.format('%s/teams/%s/boards/%s/items', API_URL, teamId, boardId),
+        method: 'POST',
+        crossOrigin: true,
+        type: 'json',
+        data: item,
+        success: (body) => {
+          resolve(body);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
     });
   }
 };
-
-module.exports = itemSource;

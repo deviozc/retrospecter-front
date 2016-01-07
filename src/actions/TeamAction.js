@@ -6,7 +6,7 @@ import teamConstants from '../constants/team-constants';
 import TeamSource from '../sources/TeamSource';
 
 export default {
-  getTeams() {
+  getTeams: () => {
     return TeamSource.getTeams()
       .then((response) => {
         if(response.status === 200){
