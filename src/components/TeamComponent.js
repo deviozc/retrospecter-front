@@ -3,9 +3,10 @@
 import React from 'react';
 
 require('styles/Team.css');
-var teamStore = require('../stores/TeamStore');
-var teamConstants = require('../constants/team-constants');
-var teamAction = require('../actions/TeamAction');
+
+import TeamStore from '../stores/TeamStore';
+import teamConstants from '../constants/team-constants';
+import teamAction from '../actions/TeamAction';
 
 class TeamComponent extends React.Component {
   constructor(props) {
@@ -13,13 +14,13 @@ class TeamComponent extends React.Component {
     this.state = {teams: []};
   }
   componentDidMount() {
-    teamStore.on(teamConstants.GET_TEAMS, function(){
-      this.setState({teams: JSON.stringify(teamStore.getTeams())});
+    TeamStore.on(teamConstants.GET_TEAMS, function(){
+      this.setState({teams: JSON.stringify(TeamStore.getTeams())});
     }.bind(this));
     teamAction.getTeams();
   }
   componentWillUnmount() {
-    ItemStore.removeChangeListener(teamConstants.GET_TEAMS);
+    TeamStore.removeChangeListener(teamConstants.GET_TEAMS);
   }
   render() {
     var teams = this.state.teams;
