@@ -7,18 +7,13 @@ import BoardStore from '../stores/BoardStore';
 
 require('styles//Board.css');
 
-class Item extends React.Component {
+let BoardItem = React.createClass({
   render() {
     return (
       <li><a href={'/#/boards/' + this.props.id}>{this.props.data.name}</a></li>
     );
   }
-
-  fetchBoards(event) {
-    event.preventDefault();
-    this.navigate('/#/boards/' + this.props.key);
-  }
-};
+});
 
 let getStateFromStore = () => {
   return {
@@ -27,7 +22,6 @@ let getStateFromStore = () => {
 }
 
 let Boards = React.createClass({
-
   getInitialState: function() {
     return getStateFromStore();
   },
@@ -42,7 +36,6 @@ let Boards = React.createClass({
   },
 
   _onChange() {
-    console.log('onchange')
     this.setState(getStateFromStore());
   },
 
@@ -52,7 +45,7 @@ let Boards = React.createClass({
         Please edit src/components///BoardComponent.js to update this component!
         <ul>
           {this.state.boards.map((result) => {
-            return <Item key={result.id} id={result.id} data={result} />
+            return <BoardItem key={result.id} id={result.id} data={result} />
           })}
         </ul>
       </div>
