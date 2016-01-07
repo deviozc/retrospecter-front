@@ -30,9 +30,9 @@ let fetchBoards = (teamId) => {
 };
 
 export default {
-  getBoards: function(teamId) {
+  getBoards: (teamId) => {
     return fetchBoards(teamId)
-      .then(function(boards) {
+      .then((boards) => {
         AppDispatcher.dispatch({
           type: 'FETCH_BOARDS',
           boards: boards,

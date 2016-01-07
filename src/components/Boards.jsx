@@ -22,7 +22,7 @@ let getStateFromStore = () => {
 }
 
 let Boards = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     return getStateFromStore();
   },
 
