@@ -33,7 +33,7 @@ let Category = React.createClass({
 let Board = React.createClass({
 
   getInitialState() {
-
+    return getStateFromStore();
   },
 
   componentDidMount() {
