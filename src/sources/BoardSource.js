@@ -3,7 +3,6 @@
 import util from 'util';
 import request from 'reqwest';
 
-import AppDispatcher from '../dispatchers/AppDispatcher';
 import appConstants from '../constants/app-constants';
 
 export default {
@@ -18,7 +17,7 @@ export default {
   getBoards(teamId) {
     return new Promise((resolve, reject) => {
       return request({
-        url: util.format('http://localhost:8080/teams/%s/boards', teamId),
+        url: util.format('%s/teams/%s/boards', appConstants.API_URL, teamId),
         crossOrigin: true,
         type: 'json',
         method: 'GET',

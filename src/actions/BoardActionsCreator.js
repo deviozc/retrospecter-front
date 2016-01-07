@@ -1,8 +1,5 @@
 'use strict';
 
-import util from 'util';
-import request from 'reqwest';
-
 import BoardSource from '../sources/BoardSource';
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
