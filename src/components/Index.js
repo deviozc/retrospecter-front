@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-require('styles/Index.css');
+// require('styles/Index.css');
 class IndexComponent extends React.Component {
   render() {
     return (
@@ -12,7 +12,7 @@ class IndexComponent extends React.Component {
 
             <h3>Interactive Retrospective Tool</h3>
             <br />
-            <a href="#create_team" className="btn btn-dark btn-lg">Get Started</a>
+            <a href="#teams" className="btn btn-dark btn-lg">Get Started</a>
         </div>
     </div>
 
