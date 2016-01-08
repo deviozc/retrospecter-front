@@ -12,17 +12,29 @@ require('styles/Boards.css');
 
 let BoardItemContainer = React.createClass({
   render() {
-    return (
-      <div className="row text-center">
-        <div className="col-lg-12 board-item-list">
-          <div className="row ">
-            {this.props.data.map((item) => {
-              return <BoardItem key={item._id} id={item._id} data={item} />
-            })}
+    if (this.props.data.length) {
+      return (
+        <div className="row text-center">
+          <div className="col-lg-12 board-item-list">
+            <div className="row ">
+              {this.props.data.map((item) => {
+                return <BoardItem key={item._id} id={item._id} data={item} />
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="row text-center">
+          <div className="col-lg-12 board-item-list">
+            <div className="row ">
+              There are no board for your team. Start your retrospective meeting by creating a new board!
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 });
 
