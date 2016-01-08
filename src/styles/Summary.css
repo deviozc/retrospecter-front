@@ -20,16 +20,25 @@ display: table-row;
 
 }
 .status-list ul:nth-child(2n+1) li{
-background-color: #f7f7f7; 
+background-color: #f7f7f7;
 }
 
 
 .status-list ul li{
   display: table-cell;
-  border: 1px solid #f7f7f7;
-  width:45%;
-  padding: 10px;
+  border: 1px solid #eee;
+  padding: 10px 20px;
 }
+.status-list ul li:nth-child(1){
+  width:65%;
+}
+
+
+.status-list ul li:nth-child(2){
+
+  width:35%;
+}
+
 
 @media (max-width: 991px){
     .summary .panel-body{

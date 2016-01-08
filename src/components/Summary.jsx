@@ -47,11 +47,13 @@ let Summary = React.createClass({
                         <li>Name</li>
                         <li>Status</li>
                         </ul>
-                        <ul>
+
                           {this.state.actions.map((action) => {
-                            return <li key={action._id}>{action.actionName} {action.status}</li>
+                            return <ul key={action._id}><li>{action.actionName}</li>
+                              <li>{action.status}</li>
+                            </ul>
                           })}
-                        </ul>
+
                         </div>
               </div>
         </div>
