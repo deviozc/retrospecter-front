@@ -42,6 +42,10 @@ AppDispatcher.register(
         _teams = action.teams;
         teamStore.emit(teamConstants.GET_TEAMS);
         break;
+      case teamConstants.CREATE_TEAM:
+        _teams.push(action.team);
+        teamStore.emit(teamConstants.GET_TEAMS);
+        break;
     }
   }
 );

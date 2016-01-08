@@ -19,7 +19,7 @@ var teamSource = {
       headers: {
         "Content-type": "application/json"
       },
-      body: team
+      body: JSON.stringify(team)
     });
   }
 };

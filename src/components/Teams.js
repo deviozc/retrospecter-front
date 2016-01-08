@@ -8,6 +8,7 @@ import TeamStore from '../stores/TeamStore';
 import teamConstants from '../constants/team-constants';
 import teamAction from '../actions/TeamAction';
 import Team from './Team';
+import CreateTeamButton from './CreateTeamButton';
 
 class TeamComponent extends React.Component {
   constructor(props) {
@@ -33,11 +34,7 @@ class TeamComponent extends React.Component {
                     <hr className="small"></hr>
                 </div>
                 <div className="col-lg-12 text-right match-row-padding-right">
-                    <button type="button" data-toggle="modal" data-target="#AddTeam" className="btn btn-dark ">Create Team <span
-                            className="fa-stack fa-1x">
-                                    <i className="fa fa-circle fa-stack-2x"></i>
-                                    <i className="fa fa-plus fa-stack-1x text-dark"></i>
-                                </span></button>
+                    <CreateTeamButton />
                 </div>
             </div>
             <div className="row team-item-list">

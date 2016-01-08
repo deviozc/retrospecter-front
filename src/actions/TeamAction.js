@@ -11,6 +11,8 @@ export default {
       .then((response) => {
         if(response.status === 200){
           return response.json();
+        }else{
+          Promise.reject('Server side error');
         }
       })
       .then((teams) => {
@@ -25,5 +27,27 @@ export default {
           err: err
         });
       });
+  },
+  createTeam: (team) => {
+    return TeamSource.createTeam(team)
+      .then((response) => {
+        if(response.status === 200){
+          return response.json();
+        }else{
+          Promise.reject('Server side error');
+        }
+      })
+      .then((team) => {
+        AppDispatcher.dispatch({
+          actionType: teamConstants.CREATE_TEAM,
+          team: team
+        });
+      })
+      .catch((err) => {
+        AppDispatcher.dispatch({
+          actionType: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
+          err: err
+        });
+      });;
   }
 };
