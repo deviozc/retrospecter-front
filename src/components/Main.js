@@ -34,7 +34,7 @@ class AppComponent extends React.Component {
               <Link to="/teams">Teams</Link>
             </li>
             <li>
-              <a href="#footer">Credit</a>
+              <Link to="/credits">Credits</Link>
             </li>
           </ul>
         </nav>
