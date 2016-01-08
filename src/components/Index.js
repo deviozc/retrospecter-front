@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-// require('styles/Index.css');
+require('styles/Index.css');
+
 class IndexComponent extends React.Component {
   render() {
     return (
