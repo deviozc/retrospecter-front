@@ -23,15 +23,17 @@ class ItemStore extends EventEmitter {
   }
 }
 
-ItemStore.dispatchToken = AppDispatcher.register((action) => {
+let itemStore = new ItemStore();
+
+itemStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
     case 'ITEM_CREATED':
       _items.push(action.item);
-      ItemStore.emitChange();
+      itemStore.emitChange();
       break;
     case 'ITEM_FETCHED':
       _items = action.items;
-      ItemStore.emitChange();
+      itemStore.emitChange();
       break;
     case 'ITEM_INCREMENTED':
       // TODO: need better way of doing this, i.e use a number
@@ -41,9 +43,11 @@ ItemStore.dispatchToken = AppDispatcher.register((action) => {
           break;
         }
       }
+      itemStore.emitChange();
+      break;
     default:
       break;
   }
 });
 
-export default new ItemStore();
+export default itemStore;

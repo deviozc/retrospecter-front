@@ -22,7 +22,7 @@ class RetroRoute extends Component {
           </Route>
           <Route path='boards' component={Boards}>
           </Route>
-          <Route path='/boards/:id' component={Board} />
+          <Route path='/teams/:teamId/boards/:id' component={Board} />
         </Route>
       </Router>
     );

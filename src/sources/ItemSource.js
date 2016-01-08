@@ -12,6 +12,7 @@ var HEADERS = {
 
 export default {
   getItems(teamId, boardId) {
+    console.log(teamId, boardId);
     return new Promise((resolve, reject) => {
       return request({
         url: util.format('%s/teams/%s/boards/%s/items', API_URL, teamId, boardId),
@@ -19,6 +20,7 @@ export default {
         crossOrigin: true,
         type: 'json',
         success: (body) => {
+          console.log(body);
           resolve(body);
         },
         error: (err) => {

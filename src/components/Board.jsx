@@ -9,81 +9,23 @@ import ItemStore from '../stores/ItemStore';
 import ItemActionsCreator from '../actions/ItemActionsCreator';
 
 let getStateFromStore = () => {
-  /*
   let state = {};
 
   let items = ItemStore.getAll();
 
-  for (let item of items) {
-    if (state[item.category]) {
-      state[item.category].push(item);
-    } else {
-      state[item.category] = [item]
+  if (!(items && items.length)) {
+    state.boards = {};
+  } else {
+    for (let item of items) {
+      if (state[item.category]) {
+        state[item.category].push(item);
+      } else {
+        state[item.category] = [item]
+      }
     }
   }
 
   return state;
-  */
-
-  return {
-    modalIsOpen: false,
-
-    GOOD: [
-      {
-        id: 'abc',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc1',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc2',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc3',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-    ],
-    IDEA: [
-    ],
-    BAD: [],
-    ACHIEVEMENT: [
-      {
-        id: 'abc',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc1',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc2',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-      {
-        id: 'abc3',
-        teamId: 'team1',
-        boardId: 'board1',
-        name: 'dafsdf'
-      },
-    ]
-  }
 };
 
 const customStyle = {
@@ -96,13 +38,13 @@ let Item = React.createClass({
   vote(event) {
     event.preventDefault();
 
-    ItemActionsCreator.incrementVote(this.props.data.teamId, this.props.data.boardId, this.props.data.id);
+    ItemActionsCreator.incrementVote(this.props.data.teamId, this.props.data.boardId, this.props.data._id);
   },
 
   render() {
     return (
       <li>
-        <div className="sticky-body">{this.props.data.name}</div>
+        <div className="sticky-body">{this.props.data.itemDescription}</div>
         <div className="text-right sticky-footer">
           <button type="button" className="btn btn-link pull-left" data-toggle="modal" data-target="#AddSticky" ><i className="fa fa-pencil"></i></button>
           <button type="button" onClick={this.vote} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
@@ -114,15 +56,22 @@ let Item = React.createClass({
 
 let Category = React.createClass({
   render() {
-    return (
-      <div className="col-md-6 sticky-bg">
-        <ul className="sticky-item">
-          {this.props.data.map((item) => {
-            return <Item key={item.id} data={item} />
-          })}
-        </ul>
-      </div>
-    )
+    if (this.props.data && this.props.data.length) {
+      return (
+        <div className="col-md-6 sticky-bg">
+          <ul className="sticky-item">
+            {this.props.data.map((item) => {
+              return <Item key={item._id} data={item} />
+            })}
+          </ul>
+        </div>
+      )
+    } else {
+      return (
+        <div className="col-md-6 sticky-bg">
+        </div>
+      );
+    }
   }
 });
 
@@ -133,6 +82,7 @@ let Board = React.createClass({
 
   componentDidMount() {
     ItemStore.addChangeListener(this._onChange);
+    ItemActionsCreator.getItems(this.props.params.teamId, this.props.params.id);
   },
 
   componentWillUnmount() {
@@ -162,7 +112,7 @@ let Board = React.createClass({
       itemDescription: this.state.description
     };
 
-    ItemActionsCreator.createItem(this.props.teamId, this.props.boardId, body);
+    ItemActionsCreator.createItem(this.props.params.teamId, this.props.params.boardId, body);
   },
 
   handleChange(e) {

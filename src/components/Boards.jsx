@@ -16,7 +16,7 @@ let BoardItemContainer = React.createClass({
         <div className="col-lg-12 board-item-list">
           <div className="row ">
             {this.props.data.map((item) => {
-              return <BoardItem key={item.id} id={item.id} data={item} />
+              return <BoardItem key={item._id} id={item._id} data={item} />
             })}
           </div>
         </div>
@@ -41,7 +41,7 @@ let BoardItem = React.createClass({
           <p>Date: Jan 6, 2016</p>
 
           <p>Period: 1 hrs</p>
-          <Link to={`/boards/${this.props.id}`} className="btn btn-dark">More Info</Link>
+          <Link to={`/teams/${this.props.data.teamId}/boards/${this.props.id}`} className="btn btn-dark">More Info</Link>
         </div>
       </div>
     );
