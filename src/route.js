@@ -8,6 +8,7 @@ import Teams from './components/Teams';
 import Boards from './components/Boards';
 import Board from './components/Board'
 import Index from './components/Index';
+import Summary from './components/Summary';
 
 class RetroRoute extends Component {
   render() {
@@ -16,11 +17,10 @@ class RetroRoute extends Component {
         <Route path='/' component={App}>
           <IndexRoute component={Index} />
           <Route path='about' component={Teams} />
-          <Route path='teams' component={Teams}>
-          </Route>
-          <Route path='/teams/:id/boards' component={Boards}>
-          </Route>
+          <Route path='teams' component={Teams} />
+          <Route path='/teams/:id/boards' component={Boards} />
           <Route path='/teams/:teamId/boards/:id' component={Board} />
+          <Route path='/teams/:teamId/summary' component={Summary} />
         </Route>
       </Router>
     );
