@@ -46,8 +46,9 @@ teamStore.dispatchToken = AppDispatcher.register((action) => {
       teamStore.emitChange();
       break;
     case teamConstants.CREATE_TEAM:
-      break;
+      _teams.push(action.team);
       teamStore.emitChange();
+      break;
     default:
   }
 });
