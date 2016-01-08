@@ -22,7 +22,6 @@ export default {
         });
       })
       .catch((err) => {
-        console.log(err.stack);
         AppDispatcher.dispatch({
           type: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
           err: err
@@ -40,13 +39,13 @@ export default {
       })
       .then((team) => {
         AppDispatcher.dispatch({
-          actionType: teamConstants.CREATE_TEAM,
+          type: teamConstants.CREATE_TEAM,
           team: team
         });
       })
       .catch((err) => {
         AppDispatcher.dispatch({
-          actionType: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
+          type: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
           err: err
         });
       });;
