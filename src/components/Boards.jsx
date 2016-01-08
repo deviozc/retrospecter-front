@@ -48,10 +48,10 @@ let BoardItem = React.createClass({
   }
 });
 
-let getStateFromStore = (teamID) => {
+let getStateFromStore = (teamId) => {
   return {
     boards: BoardStore.getAll(),
-    team: TeamStore.getTeam(teamID) || {}
+    team: TeamStore.getTeam(teamId) || {}
   };
 }
 
@@ -70,7 +70,7 @@ let Boards = React.createClass({
   },
 
   _onChange() {
-    this.setState(getStateFromStore());
+    this.setState(getStateFromStore(this.props.params.id));
   },
 
   render() {

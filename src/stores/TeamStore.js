@@ -22,6 +22,9 @@ let teamStore = {
   },
   getTeam: function(id){
     var result;
+    if(!_teams){
+      return;
+    }
     _teams.some(function(team){
       if(team._id === id){
         result = team;
