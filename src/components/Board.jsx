@@ -28,18 +28,26 @@ let getStateFromStore = () => {
     GOOD: [
       {
         id: 'abc',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc1',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc2',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc3',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
     ],
@@ -49,18 +57,26 @@ let getStateFromStore = () => {
     ACHIEVEMENT: [
       {
         id: 'abc',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc1',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc2',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
       {
         id: 'abc3',
+        teamId: 'team1',
+        boardId: 'board1',
         name: 'dafsdf'
       },
     ]
@@ -71,7 +87,7 @@ let Item = React.createClass({
   vote(event) {
     event.preventDefault();
 
-    ItemSource.incrementVote(this.props.teamId, this.props.boardId, this.props.id);
+    ItemSource.incrementVote(this.props.data.teamId, this.props.data.boardId, this.props.data.id);
   },
 
   render() {
@@ -80,7 +96,7 @@ let Item = React.createClass({
         <div className="sticky-body">{this.props.data.name}</div>
         <div className="text-right sticky-footer">
           <button type="button" className="btn btn-link pull-left" data-toggle="modal" data-target="#AddSticky" ><i className="fa fa-pencil"></i></button>
-          <button type="button" onClick={this.vote.bind(this)} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
+          <button type="button" onClick={this.vote} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
         </div>
       </li>
     );
