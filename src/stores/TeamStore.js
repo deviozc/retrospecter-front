@@ -6,8 +6,8 @@ var teamConstants = require('../constants/team-constants');
 
 import AppDispatcher from '../dispatchers/AppDispatcher';
 
-var teams;
-var teamStore = {
+let _teams = [];
+let teamStore = {
   on: function(event, callback) {
     eventEmitter.on(event, callback);
   },
@@ -18,7 +18,7 @@ var teamStore = {
       eventEmitter.removeListener(event, callback);
   },
   getTeams: function(){
-    return teams;
+    return _teams;
   }
 };
 AppDispatcher.register(
@@ -26,7 +26,7 @@ AppDispatcher.register(
     switch (action.actionType) {
       case teamConstants.GET_TEAMS:
         console.log(action);
-        teams = action.teams;
+        _teams = action.teams;
         teamStore.emit(teamConstants.GET_TEAMS);
         break;
     }

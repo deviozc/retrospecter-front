@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Router, IndexRoute, Route, browserHistory} from 'react-router';
 
 import App from './components/Main';
-import Team from './components/TeamComponent';
+import Teams from './components/Teams';
 import Boards from './components/Boards';
 import Board from './components/Board'
 import Index from './components/Index';
@@ -15,9 +15,9 @@ class RetroRoute extends Component {
       <Router history={browserHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={Index} />
-          <Route path='about' component={Team} />
-          <Route path='team' component={Team}>
-            <Route path='/team/:id' component={Team} />
+          <Route path='about' component={Teams} />
+          <Route path='teams' component={Teams}>
+            <Route path=':id' component={Teams} />
           </Route>
           <Route path='boards' component={Boards}>
           </Route>
