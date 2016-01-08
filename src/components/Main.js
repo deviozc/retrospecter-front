@@ -21,13 +21,7 @@ class AppComponent extends React.Component {
               <a href="#top">Start</a>
             </li>
             <li>
-              <a href="#create_team">Team Directory</a>
-            </li>
-            <li>
               <Link to="/teams">Teams</Link>
-            </li>
-            <li>
-              <Link to="/boards">Boards</Link>
             </li>
             <li>
               <a href="#summary">Summary</a>

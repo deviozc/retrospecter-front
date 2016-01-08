@@ -6,10 +6,6 @@ import appConstants from '../constants/app-constants';
 
 var API_URL = appConstants.API_URL;
 
-var HEADERS = {
-    Accept: 'application/json'
-};
-
 export default {
   getItems(teamId, boardId) {
     return new Promise((resolve, reject) => {
@@ -19,7 +15,6 @@ export default {
         crossOrigin: true,
         type: 'json',
         success: (body) => {
-          console.log(body);
           resolve(body);
         },
         error: (err) => {

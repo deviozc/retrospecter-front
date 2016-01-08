@@ -18,9 +18,7 @@ class RetroRoute extends Component {
           <Route path='about' component={Teams} />
           <Route path='teams' component={Teams}>
           </Route>
-          <Route path='teams/:id/boards' component={Boards}>
-          </Route>
-          <Route path='boards' component={Boards}>
+          <Route path='/teams/:id/boards' component={Boards}>
           </Route>
           <Route path='/teams/:teamId/boards/:id' component={Board} />
         </Route>
