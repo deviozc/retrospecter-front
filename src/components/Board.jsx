@@ -1,9 +1,12 @@
 'use strict';
 
+require('styles/Board.css');
+
 import React from 'react';
 
 import ItemStore from '../stores/ItemStore';
-require('styles/Board.css');
+import ItemSource from '../sources/ItemSource';
+
 let getStateFromStore = () => {
   /*
   let state = {};
@@ -65,13 +68,19 @@ let getStateFromStore = () => {
 };
 
 let Item = React.createClass({
+  vote(event) {
+    event.preventDefault();
+
+    ItemSource.incrementVote(this.props.teamId, this.props.boardId, this.props.id);
+  },
+
   render() {
     return (
       <li>
         <div className="sticky-body">{this.props.data.name}</div>
         <div className="text-right sticky-footer">
           <button type="button" className="btn btn-link pull-left" data-toggle="modal" data-target="#AddSticky" ><i className="fa fa-pencil"></i></button>
-          <button type="button" className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
+          <button type="button" onClick={this.vote.bind(this)} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
         </div>
       </li>
     );
