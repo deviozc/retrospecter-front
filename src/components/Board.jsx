@@ -51,7 +51,7 @@ let Item = React.createClass({
         <div className="sticky-body">{this.props.data.itemDescription}</div>
         <div className="text-right sticky-footer">
           <button type="button" className="btn btn-link pull-left" data-toggle="modal" data-target="#AddSticky" ><i className="fa fa-pencil"></i></button>
-          <button type="button" onClick={this.vote} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
+          <button type="button" onClick={this.vote} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i> +{this.props.data.votes}</button>
         </div>
       </li>
     );
