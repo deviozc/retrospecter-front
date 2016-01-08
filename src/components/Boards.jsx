@@ -107,8 +107,6 @@ let Boards = React.createClass({
         break;
     }
 
-    console.log(state);
-
     this.setState(state);
   },
 
@@ -118,9 +116,10 @@ let Boards = React.createClass({
       period: this.state.period
     };
 
-    console.log(body);
-
     BoardActionsCreator.createBoard(this.props.params.id, body);
+
+    delete this.state.name;
+    delete this.state.period;
 
     this.closeModal();
   },

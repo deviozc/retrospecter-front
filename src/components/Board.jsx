@@ -115,6 +115,9 @@ let Board = React.createClass({
 
     ItemActionsCreator.createItem(this.props.params.teamId, this.props.params.id, body);
 
+    delete this.state.description;
+    delete this.state.category;
+
     this.closeModal();
   },
 
