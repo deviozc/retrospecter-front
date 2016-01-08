@@ -27,7 +27,7 @@ let ActionItemsComponent = React.createClass({
   },
 
   componentWillUnmount() {
-    TeamStore.removeChangeListener(this._onChange);
+    ActionItemStore.removeChangeListener(this._onChange);
   },
 
   render() {
@@ -76,13 +76,13 @@ let CreateActionButtonComponent = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    ActionItemAction.createAction(this.props.params.teamId, this.props.params.boardId, {actionName: ReactDOM.findDOMNode(this.refs.name).value});
+    ActionItemAction.createAction(this.props.params.teamId, this.props.params.boardId, {actionName: ReactDOM.findDOMNode(this.refs.name).value, status: ReactDOM.findDOMNode(this.refs.status).value});
     this.closeModal();
   },
   render: function() {
     return (
       <div>
-        <button type="button" onClick={this.openModal} className="btn btn-dark ">Create Team <span
+        <button type="button" onClick={this.openModal} className="btn btn-dark ">Create Action <span
                 className="fa-stack fa-1x">
                         <i className="fa fa-circle fa-stack-2x"></i>
                         <i className="fa fa-plus fa-stack-1x text-dark"></i>
@@ -95,18 +95,24 @@ let CreateActionButtonComponent = React.createClass({
                       <div className="modal-header">
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}><span
                                   aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">Add Team</h4>
+                          <h4 className="modal-title" id="myModalLabel">Add Action</h4>
                       </div>
                       <form onSubmit={this.handleSubmit}>
                           <div className="modal-body">
                               <div className="form-group">
+                                      <select defaultValue="TODO" ref="status">
+                                        <option value="TODO">To-do</option>
+                                        <option value="IN PROGRESS">In Progress</option>
+                                        <option value="DONE">Done</option>
+                                        <option value="WAITING">Waiting</option>
+                                      </select>
                                       <label htmlFor="boardName">Action Item</label>
-                                      <input className="form-control" name="name" ref="name" type="text" placeholder="Action Item" />
+                                      <textarea className="form-control" name="name" ref="name" type="text" placeholder="Action Item"></textarea>
                                   </div>
                           </div>
                           <div className="modal-footer">
                               <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closeModal}>Cancel</button>
-                              <button type="button" className="btn btn-primary" type="submit">Create Team</button>
+                              <button type="button" className="btn btn-primary" type="submit">Create Action</button>
                           </div>
                       </form>
 

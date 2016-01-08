@@ -34,7 +34,7 @@ actionStore.dispatchToken = AppDispatcher.register((action) => {
       actionStore.emitChange();
       break;
     case actionConstants.CREATE_ACTION:
-      _actions.push(action.team);
+      _actions.push(action.action);
       actionStore.emitChange();
       break;
     default:

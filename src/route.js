@@ -18,10 +18,10 @@ class RetroRoute extends Component {
         <Route path='/' component={App}>
           <IndexRoute component={Index} />
           <Route path='teams' component={Teams} />
-          <Route path='/teams/:id/boards' component={Boards} />
-          <Route path='/teams/:teamId/boards/:id' component={Board} />
-          <Route path='/teams/:teamId/boards/:boardId/actions' component={Actions} />
-          <Route path='/teams/:teamId/summary' component={Summary} />
+          <Route path='teams/:id/boards' component={Boards} />
+          <Route path='teams/:teamId/boards/:id' component={Board} />
+          <Route path='teams/:teamId/boards/:boardId/actions' component={Actions} />
+          <Route path='teams/:teamId/summary' component={Summary} />
         </Route>
       </Router>
     );
