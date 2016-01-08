@@ -23,7 +23,6 @@ let TeamComponent = React.createClass({
   },
 
   _onChange() {
-    console.log("hihi2")
     this.setState({ teams: TeamStore.getTeams() });
   },
 

@@ -56,7 +56,7 @@ class CreateTeamButtonComponent extends React.Component {
                       <form onSubmit={this.handleSubmit.bind(this)}>
                           <div className="modal-body">
                               <div className="form-group">
-                                      <label for="boardName">Team Name</label>
+                                      <label htmlFor="boardName">Team Name</label>
                                       <input className="form-control" name="name" ref="name" type="text" placeholder="Board Name" />
                                   </div>
                           </div>
