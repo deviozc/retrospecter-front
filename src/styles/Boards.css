@@ -37,15 +37,16 @@
     -webkit-box-shadow: 5px 5px 7px rgba(150,150,150,.7);
     /* Opera */
     box-shadow: 5px 5px 7px rgba(150,150,150,.7);
+    position:relative;
 }
 
 .sticky-header, .sticky-footer{
-    position:relative
+    position:absolute;
 }
 
 .sticky-footer{
-    margin-top: 60%;
-    width:100%;
+    bottom:5px;
+    width:80%;
 }
 
 .sticky-header button{
