@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router';
 
 import BoardActionsCreator from '../actions/BoardActionsCreator';
 import BoardStore from '../stores/BoardStore';
@@ -39,7 +40,7 @@ let BoardItem = React.createClass({
           <p>Date: Jan 6, 2016</p>
 
           <p>Period: 1 hrs</p>
-          <a href={'/#/boards/' + this.props.id} className="btn btn-dark">More Info</a>
+          <Link to={`/boards/${this.props.id}`} className="btn btn-dark">More Info</Link>
         </div>
       </div>
     );
