@@ -5,10 +5,11 @@ require('styles/Board.css');
 import React from 'react';
 import Modal from 'react-modal';
 
+import BoardStore from '../stores/BoardStore';
 import ItemStore from '../stores/ItemStore';
 import ItemActionsCreator from '../actions/ItemActionsCreator';
 
-let getStateFromStore = () => {
+let getStateFromStore = (boardId) => {
   let state = {};
 
   let items = ItemStore.getAll();
@@ -24,6 +25,8 @@ let getStateFromStore = () => {
       }
     }
   }
+
+  state.board = BoardStore.getOne(boardId);
 
   return state;
 };
@@ -77,7 +80,7 @@ let Category = React.createClass({
 
 let Board = React.createClass({
   getInitialState() {
-    return getStateFromStore();
+    return getStateFromStore(this.props.params.id);
   },
 
   componentDidMount() {
@@ -90,7 +93,7 @@ let Board = React.createClass({
   },
 
   _onChange() {
-    this.setState(getStateFromStore());
+    this.setState(getStateFromStore(this.props.params.id));
   },
 
   openModal() {
@@ -139,7 +142,7 @@ let Board = React.createClass({
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12">
-              <h2>Board Name</h2>
+              <h2>{this.state.board.name}</h2>
               <hr className="small" />
             </div>
             <div className="col-lg-12 text-right ">

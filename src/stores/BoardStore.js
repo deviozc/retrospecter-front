@@ -21,6 +21,19 @@ class BoardStore extends EventEmitter {
   getAll() {
     return _boards;
   }
+
+  getOne(boardId) {
+    var result = {};
+
+    for (let board of _boards) {
+      if (board._id === boardId) {
+        result = board;
+        break;
+      }
+    }
+
+    return result;
+  }
 }
 
 let boardStore = new BoardStore();
