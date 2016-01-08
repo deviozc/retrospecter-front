@@ -15,7 +15,7 @@ let BoardItemContainer = React.createClass({
         <div className="col-lg-12 board-item-list">
           <div className="row ">
             {this.props.data.map((item) => {
-              return <BoardItem key={item.id} id={item.id} data={item} />
+              return <BoardItem key={item._id} id={item._id} data={item} />
             })}
           </div>
         </div>
