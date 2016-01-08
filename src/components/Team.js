@@ -18,7 +18,7 @@ class TeamComponent extends React.Component {
     return (
       <div className="col-sm-12  team-item">
           <div className="panel panel-default">
-              <div className="panel-header clearfix"><h3 className="pull-left"><Link to={`/teams/${team._id}`}>{this.props.data.name}</Link></h3>
+              <div className="panel-header clearfix"><h3 className="pull-left"><Link to={`/teams/${team._id}/boards`}>{this.props.data.name}</Link></h3>
                   <p className="pull-left Lead match-row-padding-left">This team is a demo</p>
                   <button type="button" data-toggle="modal" data-target="#AddBoard" className="pull-right btn-link"><i
                           className="fa fa-plus"></i> Add Board

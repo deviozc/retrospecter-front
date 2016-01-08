@@ -25,7 +25,6 @@ AppDispatcher.register(
   function(action) {
     switch (action.actionType) {
       case teamConstants.GET_TEAMS:
-        console.log(action);
         _teams = action.teams;
         teamStore.emit(teamConstants.GET_TEAMS);
         break;
