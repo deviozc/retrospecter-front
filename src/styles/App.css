@@ -13,7 +13,23 @@ body{
 body {
     font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+.animation-enter {
+  opacity: 0.01;
+}
 
+.animation-enter.animation-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.animation-leave {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.animation-leave.animation-leave-active {
+  opacity: 0;
+}
 .text-vertical-center {
     display: table-cell;
     text-align: center;

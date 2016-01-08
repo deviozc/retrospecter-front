@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 import BoardStore from '../stores/BoardStore';
 import ItemStore from '../stores/ItemStore';
 import ItemActionsCreator from '../actions/ItemActionsCreator';
+import { Link } from 'react-router';
 
 let getStateFromStore = (boardId) => {
   let state = {};
@@ -163,8 +164,7 @@ let Board = React.createClass({
             <Category data={this.state.ACHIEVEMENT} />
           </div>
           <br />
-
-          <p className="text-center"><a href="#summary" className="btn btn-dark text-center">Go To Summary</a></p>
+          <p className="text-center"><Link to={`/teams/${this.props.params.teamId}/boards/${this.props.params.id}/actions`} className="btn btn-dark text-center">Action Item view</Link></p>
         </div>
 
         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyle}>

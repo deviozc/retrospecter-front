@@ -4,6 +4,7 @@ require('styles/App.css');
 import React from 'react';
 import { Link } from 'react-router'
 let yeomanImage = require('../images/yeoman.png');
+let ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class AppComponent extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class AppComponent extends React.Component {
             </li>
           </ul>
         </nav>
-      {this.props.children}
+        {this.props.children}
       </div>
     );
   }

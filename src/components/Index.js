@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import {Link} from 'react-router'
 require('styles/Index.css');
 
 class IndexComponent extends React.Component {
@@ -12,7 +13,7 @@ class IndexComponent extends React.Component {
             <h1>Retrospecter</h1>
             <h3>Interactive Retrospective Tool</h3>
             <br />
-            <a href="#teams" className="btn btn-dark btn-lg">Get Started</a>
+            <Link to="/teams" className="btn btn-dark btn-lg">Get Started</Link>
           </div>
         </div>
       </header>
