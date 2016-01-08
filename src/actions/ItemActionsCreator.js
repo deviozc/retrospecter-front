@@ -19,7 +19,7 @@ export default {
   },
 
   createItem: (teamId, boardId, body) => {
-    return ItemSource.createItem(team, boardId, body)
+    return ItemSource.createItem(teamId, boardId, body)
       .then((body) => {
         AppDispatcher.dispatch({
           type: 'ITEM_CREATED',
