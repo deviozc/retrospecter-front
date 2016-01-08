@@ -12,7 +12,6 @@ var HEADERS = {
 
 export default {
   getItems(teamId, boardId) {
-    console.log(teamId, boardId);
     return new Promise((resolve, reject) => {
       return request({
         url: util.format('%s/teams/%s/boards/%s/items', API_URL, teamId, boardId),
@@ -37,7 +36,8 @@ export default {
         method: 'POST',
         crossOrigin: true,
         type: 'json',
-        data: item,
+        contentType: 'application/json',
+        data: JSON.stringify(item),
         success: (body) => {
           resolve(body);
         },

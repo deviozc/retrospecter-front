@@ -109,15 +109,24 @@ let Board = React.createClass({
     e.preventDefault();
 
     let body = {
-      itemDescription: this.state.description
+      itemDescription: this.state.description,
+      category: this.state.category
     };
 
-    ItemActionsCreator.createItem(this.props.params.teamId, this.props.params.boardId, body);
+    ItemActionsCreator.createItem(this.props.params.teamId, this.props.params.id, body);
+
+    this.closeModal();
   },
 
   handleChange(e) {
     this.setState({
       description: e.target.value
+    });
+  },
+
+  handleSelectChange(e) {
+    this.setState({
+      category: e.target.value
     });
   },
 
@@ -162,8 +171,12 @@ let Board = React.createClass({
               </div>
               <div className="modal-body">
                 <div className="form-group">
-                  <label htmlFor="boardName">Board Name</label>
-                  <input type="text" className="form-control" id="boardName" placeholder="Board Name"/>
+                  <select defaultValue="GOOD" onChange={this.handleSelectChange}>
+                    <option value="GOOD">Good</option>
+                    <option value="BAD">Bad</option>
+                    <option value="ACHIEVEMENT">Achievement</option>
+                    <option value="IDEA">Idea</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label htmlFor="boardPeriod">Sticky Detail</label>
