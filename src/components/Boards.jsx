@@ -51,10 +51,8 @@ let BoardItem = React.createClass({
             <strong>{this.props.data.name}</strong>
           </h4>
 
-          <p>Date: Jan 6, 2016</p>
-
-          <p>Period: 1 hrs</p>
-          <Link to={`/teams/${this.props.data.teamId}/boards/${this.props.id}`} className="btn btn-dark">More Info</Link>
+          <p>{this.props.data.period}</p>
+          <Link to={`/teams/${this.props.data.teamId}/boards/${this.props.id}`} className="btn btn-dark">View Details</Link>
         </div>
       </div>
     );
