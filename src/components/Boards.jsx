@@ -48,59 +48,19 @@ let BoardItem = React.createClass({
 });
 
 let getStateFromStore = () => {
-  //BoardStore.getAll()
   return {
-    boards: [
-      {
-        id: 'abc1',
-        name: 'test1'
-      },
-      {
-        id: 'abc2',
-        name: 'test2'
-      },
-      {
-        id: 'abc3',
-        name: 'test3'
-      },
-      {
-        id: 'abc4',
-        name: 'test5'
-      },
-      {
-        id: 'abc5',
-        name: 'test5'
-      },
-      {
-        id: 'abc6',
-        name: 'test6'
-      },
-      {
-        id: 'abc7',
-        name: 'test7'
-      },
-      {
-        id: 'abc8',
-        name: 'test8'
-      }
-    ]
+    boards: BoardStore.getAll()
   };
 }
 
 let Boards = React.createClass({
-  /*
-  propTypes: {
-    teamId: React.PropTypes.element.isRequired
-  },
-  */
-
   getInitialState() {
     return getStateFromStore();
   },
 
   componentDidMount() {
     BoardStore.addChangeListener(this._onChange);
-    BoardActionsCreator.getBoards('41224d776a326fb40f000001');
+    BoardActionsCreator.getBoards(this.props.params.id);
   },
 
   componentWillUnmount() {
@@ -127,7 +87,7 @@ let Boards = React.createClass({
                   <i className="fa fa-plus fa-stack-1x text-dark"></i>
                 </span></button>
               </div>
-              <BoardItemContainer data={this.state.boards} teamId={'41224d776a326fb40f000001'} />
+              <BoardItemContainer data={this.state.boards} teamId={this.props.params.id} />
             </div>
           </div>
         </section>
