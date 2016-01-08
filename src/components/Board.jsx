@@ -6,7 +6,7 @@ import React from 'react';
 import Modal from 'react-modal';
 
 import ItemStore from '../stores/ItemStore';
-import ItemSource from '../sources/ItemSource';
+import ItemActionsCreator from '../actions/ItemActionsCreator';
 
 let getStateFromStore = () => {
   /*
@@ -96,7 +96,7 @@ let Item = React.createClass({
   vote(event) {
     event.preventDefault();
 
-    ItemSource.incrementVote(this.props.data.teamId, this.props.data.boardId, this.props.data.id);
+    ItemActionsCreator.incrementVote(this.props.data.teamId, this.props.data.boardId, this.props.data.id);
   },
 
   render() {
@@ -155,6 +155,22 @@ let Board = React.createClass({
     });
   },
 
+  createSticky(e) {
+    e.preventDefault();
+
+    let body = {
+      itemDescription: this.state.description
+    };
+
+    ItemActionsCreator.createItem(this.props.teamId, this.props.boardId, body);
+  },
+
+  handleChange(e) {
+    this.setState({
+      description: e.target.value
+    });
+  },
+
   render() {
     return (
       <section id="boardPage" className="boards">
@@ -201,12 +217,12 @@ let Board = React.createClass({
                 </div>
                 <div className="form-group">
                   <label htmlFor="boardPeriod">Sticky Detail</label>
-                  <textarea className="form-control" id="teamDescription" rows="5"></textarea>
+                  <textarea className="form-control" onChange={this.handleChange} id="itemDescription" rows="5"></textarea>
                 </div>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" onClick={this.closeModal} data-dismiss="modal">Cancel</button>
-                <button type="button" className="btn btn-primary">Create Board</button>
+                <button type="button" className="btn btn-primary" onClick={this.createSticky}>Add</button>
               </div>
             </div>
           </div>

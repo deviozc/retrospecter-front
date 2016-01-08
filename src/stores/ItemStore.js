@@ -33,6 +33,14 @@ ItemStore.dispatchToken = AppDispatcher.register((action) => {
       _items = action.items;
       ItemStore.emitChange();
       break;
+    case 'ITEM_INCREMENTED':
+      // TODO: need better way of doing this, i.e use a number
+      for (let i of _items) {
+        if (i.id === action.item.id) {
+          i = action.items;
+          break;
+        }
+      }
     default:
       break;
   }
