@@ -6,7 +6,7 @@ import ActionItemAction from '../actions/ActionItemAction';
 import TeamAction from '../actions/TeamAction';
 import TeamStore from '../stores/TeamStore';
 import ActionStore from '../stores/ActionItemStore';
-
+require('styles/Summary.css');
 let getStateFromStore = (teamId) => {
   return {
     team: TeamStore.getTeam(teamId),
@@ -37,14 +37,23 @@ let Summary = React.createClass({
 
   render() {
     return (
-      <div>
-        <div> Summary Page: {this.state.team.name} </div>
-        <div>
-          <ul>
-            {this.state.actions.map((action) => {
-              return <li key={action._id}>{action.actionName} {action.status}</li>
-            })}
-          </ul>
+    <div className="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>Summary Page: {this.state.team.name} </h2>
+                    <hr className="small"/>
+                    <div className="row">
+                        <div className="col-md-8 col-md-offset-2 text-left status-list">
+                        <div className="status-item">
+                        <ul>
+                        <li>Name</li>
+                        <li>Status</li>
+                        </ul>
+                        <ul>
+                          {this.state.actions.map((action) => {
+                            return <li key={action._id}>{action.actionName} {action.status}</li>
+                          })}
+                        </ul>
+                        </div>
+              </div>
         </div>
       </div>
     );
