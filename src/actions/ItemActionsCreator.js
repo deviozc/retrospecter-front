@@ -18,13 +18,23 @@ export default {
       });
   },
 
+  getItems: (teamId, boardId) => {
+    return ItemSource.getItems(teamId, boardId)
+      .then((body) => {
+        AppDispatcher.dispatch({
+          type: 'ITEM_FETCHED',
+          items: body
+        });
+      });
+  },
+
   createItem: (teamId, boardId, body) => {
     return ItemSource.createItem(teamId, boardId, body)
       .then((body) => {
         AppDispatcher.dispatch({
           type: 'ITEM_CREATED',
           item: body
-        })
+        });
       })
       .catch((err) => {
         console.log(err);

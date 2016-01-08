@@ -44,7 +44,7 @@ let Item = React.createClass({
   render() {
     return (
       <li>
-        <div className="sticky-body">{this.props.data.name}</div>
+        <div className="sticky-body">{this.props.data.itemDescription}</div>
         <div className="text-right sticky-footer">
           <button type="button" className="btn btn-link pull-left" data-toggle="modal" data-target="#AddSticky" ><i className="fa fa-pencil"></i></button>
           <button type="button" onClick={this.vote} className="btn btn-link pull-right"><i className="fa fa-thumbs-up"></i></button>
@@ -82,7 +82,7 @@ let Board = React.createClass({
 
   componentDidMount() {
     ItemStore.addChangeListener(this._onChange);
-    ItemActionsCreator.getItems(this.props.teamId, this.props.boardId);
+    ItemActionsCreator.getItems(this.props.params.teamId, this.props.params.id);
   },
 
   componentWillUnmount() {
@@ -112,7 +112,7 @@ let Board = React.createClass({
       itemDescription: this.state.description
     };
 
-    ItemActionsCreator.createItem(this.props.teamId, this.props.boardId, body);
+    ItemActionsCreator.createItem(this.props.params.teamId, this.props.params.boardId, body);
   },
 
   handleChange(e) {
