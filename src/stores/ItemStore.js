@@ -25,7 +25,7 @@ class ItemStore extends EventEmitter {
 
 ItemStore.dispatchToken = AppDispatcher.register((action) => {
   switch (action.type) {
-    case 'ITEM_RECEIVED':
+    case 'ITEM_CREATED':
       _items.push(action.item);
       ItemStore.emitChange();
       break;
