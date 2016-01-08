@@ -3,7 +3,7 @@
 import React from 'react';
 
 import ItemStore from '../stores/ItemStore';
-
+require('styles/Board.css');
 let getStateFromStore = () => {
   /*
   let state = {};

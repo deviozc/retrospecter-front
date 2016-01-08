@@ -1,3 +1,17 @@
-.board-component {
-  border: 1px dashed #f00;
+/* Team Page */
+
+.team-page {
+    padding: 50px 0;
+    min-height:100%;
+}
+
+.board-item {
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px 10px;
+}
+
+
+.board-item-list{
+    margin:50px 0 0 0;
 }

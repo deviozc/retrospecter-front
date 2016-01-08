@@ -1,0 +1,61 @@
+/* Board Page */
+.boards{
+    padding: 50px 0;
+    min-height:100%;
+}
+
+.sticky-row-one .sticky-bg:nth-child(1), .sticky-row-two .sticky-bg:nth-child(2){
+    background-color: #f7f7f7;
+}
+
+@media (max-width: 991px){
+    .sticky-row-one .sticky-bg:nth-child(1), .sticky-row-two .sticky-bg:nth-child(1){
+        background-color: #f7f7f7;
+    }
+    .sticky-row-one .sticky-bg:nth-child(2), .sticky-row-two .sticky-bg:nth-child(2){
+        background-color: #ffffff;
+    }
+
+}
+
+.sticky-item {
+    min-height: 38vh;
+    padding: 10px 0;
+}
+
+.sticky-item>li{
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:0.2em 1em;
+    margin: 0.5em;
+    float: left;
+    /* Firefox */
+    -moz-box-shadow:5px 5px 7px rgba(150,150,150,1);
+    /* Safari+Chrome */
+    -webkit-box-shadow: 5px 5px 7px rgba(150,150,150,.7);
+    /* Opera */
+    box-shadow: 5px 5px 7px rgba(150,150,150,.7);
+}
+
+.sticky-header, .sticky-footer{
+    position:relative
+}
+
+.sticky-footer{
+    margin-top: 60%;
+    width:100%;
+}
+
+.sticky-header button{
+    position: absolute;
+    left: 85%;
+    top: 1%;
+}
+
+.sticky-footer button{
+    display:block;
+    margin: 0;
+    padding: 0;
+}

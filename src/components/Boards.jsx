@@ -5,7 +5,7 @@ import React from 'react';
 import BoardActionsCreator from '../actions/BoardActionsCreator';
 import BoardStore from '../stores/BoardStore';
 
-require('styles//Board.css');
+require('styles/Boards.css');
 
 let BoardItemContainer = React.createClass({
   render() {
