@@ -18,11 +18,15 @@ class TeamComponent extends React.Component {
     return (
       <div className="col-sm-12  team-item">
           <div className="panel panel-default">
-              <div className="panel-header clearfix"><h3 className="pull-left"><Link to={`/teams/${team._id}/boards`}>{this.props.data.name}</Link></h3>
+              <div className="panel-header clearfix">
+                <h3 className="pull-left">
+                  <Link to={`/teams/${team._id}/boards`}>{this.props.data.name}</Link>
+                </h3>
               </div>
-
               <div className="panel-footer text-right">
-                  <a href="#" className="btn btn-dark">Delete</a>
+                <Link to={`/teams/${team._id}/summary`}>
+                  View Summary
+                </Link>
               </div>
           </div>
       </div>
