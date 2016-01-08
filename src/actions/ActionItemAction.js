@@ -6,6 +6,29 @@ import actionConstants from '../constants/action-constants';
 import ActionSource from '../sources/ActionSource';
 
 export default {
+  getTeamActions: (teamID) => {
+    return ActionSource.getTeamActions(teamID)
+      .then((response) => {
+        if(response.status === 200){
+          return response.json();
+        }
+
+        return Promise.reject('Server side error');
+      })
+      .then((actions) => {
+        AppDispatcher.dispatch({
+          type: actionConstants.GET_ACTIONS,
+          actions: actions
+        });
+      })
+      .catch((err) => {
+        AppDispatcher.dispatch({
+          type: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
+          err: err
+        });
+      });
+  },
+
   getActions: (teamID, boardID) => {
     return ActionSource.getActions(teamID, boardID)
       .then((response) => {
