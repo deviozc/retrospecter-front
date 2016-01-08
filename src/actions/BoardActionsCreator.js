@@ -16,5 +16,19 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+
+  createBoard: (teamId, body) => {
+    return BoardSource.createBoard(teamId, body)
+      .then((board) => {
+        AppDispatcher.dispatch({
+          type: 'CREATE_BOARD',
+          board: board,
+          teamId: teamId
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

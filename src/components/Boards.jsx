@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Modal from 'react-modal';
 import { Link } from 'react-router';
 
 import BoardActionsCreator from '../actions/BoardActionsCreator';
@@ -55,6 +56,12 @@ let getStateFromStore = (teamId) => {
   };
 }
 
+const customStyle = {
+  content: {
+    border: 0
+  }
+};
+
 let Boards = React.createClass({
   getInitialState() {
     return getStateFromStore(this.props.params.id);
@@ -62,15 +69,60 @@ let Boards = React.createClass({
 
   componentDidMount() {
     BoardStore.addChangeListener(this._onChange);
+    TeamStore.addChangeListener(this._onChange);
     BoardActionsCreator.getBoards(this.props.params.id);
   },
 
   componentWillUnmount() {
+    TeamStore.removeChangeListener(this._onChange);
     BoardStore.removeChangeListener(this._onChange);
   },
 
   _onChange() {
     this.setState(getStateFromStore(this.props.params.id));
+  },
+
+  openModal() {
+    this.setState({
+      modalIsOpen: true
+    });
+  },
+
+  closeModal() {
+    this.setState({
+      modalIsOpen: false
+    });
+  },
+
+  handleChange(e) {
+    e.preventDefault();
+    var state = {};
+
+    switch (e.target.id) {
+      case 'boardName':
+        state = { name: e.target.value };
+        break;
+      case 'boardPeriod':
+        state = { period: e.target.value };
+        break;
+    }
+
+    console.log(state);
+
+    this.setState(state);
+  },
+
+  createBoard() {
+    let body = {
+      name: this.state.name,
+      period: this.state.period
+    };
+
+    console.log(body);
+
+    BoardActionsCreator.createBoard(this.props.params.id, body);
+
+    this.closeModal();
   },
 
   render() {
@@ -83,7 +135,7 @@ let Boards = React.createClass({
               <hr className="small" />
               </div>
               <div className="col-lg-12 text-right ">
-                <button type="button" data-toggle="modal" data-target="#AddBoard" className="btn btn-dark ">Add Board <span
+                <button type="button" data-toggle="modal" onClick={this.openModal} data-target="#AddBoard" className="btn btn-dark ">Add Board <span
                   className="fa-stack fa-1x">
                   <i className="fa fa-circle fa-stack-2x"></i>
                   <i className="fa fa-plus fa-stack-1x text-dark"></i>
@@ -92,7 +144,35 @@ let Boards = React.createClass({
               <BoardItemContainer data={this.state.boards} teamId={this.props.params.id} />
             </div>
           </div>
-        </section>
+          <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} style={customStyle}>
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal" onClick={this.closeModal} aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                  <h4 className="modal-title" id="myModalLabel">Add Board</h4>
+                </div>
+                <div className="modal-body">
+
+                  <div className="form-group">
+                    <label htmlFor="boardName">Board Name</label>
+                    <input type="text" className="form-control" id="boardName" onChange={this.handleChange} placeholder="Board Name"/>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="boardPeriod">Board Period</label>
+                      <input type="datetime" className="form-control" onChange={this.handleChange} id="boardPeriod" />
+                      </div>
+
+
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-default" onClick={this.closeModal} data-dismiss="modal">Cancel</button>
+                      <button type="button" className="btn btn-primary" onClick={this.createBoard}>Create Board</button>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            </section>
       );
   }
 });

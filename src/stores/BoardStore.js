@@ -31,6 +31,10 @@ boardStore.dispatchToken = AppDispatcher.register((action) => {
       _boards = action.boards;
       boardStore.emitChange();
       break;
+    case 'CREATE_BOARD':
+      _boards.push(action.board);
+      boardStore.emitChange();
+      break;
     default:
     }
 });

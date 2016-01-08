@@ -10,20 +10,27 @@ import teamAction from '../actions/TeamAction';
 import Team from './Team';
 import CreateTeamButton from './CreateTeamButton';
 
-class TeamComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {teams: []};
-  }
+let TeamComponent = React.createClass({
+  getInitialState() {
+    return {
+      teams: []
+    };
+  },
+
   componentDidMount() {
-    TeamStore.on(teamConstants.GET_TEAMS, function(){
-      this.setState({teams: TeamStore.getTeams()});
-    }.bind(this));
+    TeamStore.addChangeListener(this._onChange);
     teamAction.getTeams();
-  }
+  },
+
+  _onChange() {
+    console.log("hihi2")
+    this.setState({ teams: TeamStore.getTeams() });
+  },
+
   componentWillUnmount() {
-    TeamStore.removeChangeListener(teamConstants.GET_TEAMS);
-  }
+    TeamStore.removeChangeListener(this._onChange);
+  },
+
   render() {
     return (
       <section id="create_team" classNameName="create-team">
@@ -46,7 +53,7 @@ class TeamComponent extends React.Component {
     </section>
     );
   }
-}
+});
 
 TeamComponent.displayName = 'TeamComponent';
 

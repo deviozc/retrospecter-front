@@ -17,13 +17,14 @@ export default {
       })
       .then((teams) => {
         AppDispatcher.dispatch({
-          actionType: teamConstants.GET_TEAMS,
+          type: teamConstants.GET_TEAMS,
           teams: teams
         });
       })
       .catch((err) => {
+        console.log(err.stack);
         AppDispatcher.dispatch({
-          actionType: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
+          type: appConstants.ACTIONS.ERRORS.SERVER_SIDE,
           err: err
         });
       });
