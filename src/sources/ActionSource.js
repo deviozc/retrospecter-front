@@ -9,9 +9,14 @@ var HEADERS = {
 };
 
 var actionSource = {
+  getTeamActions: function(teamID) {
+    return fetch(API_URL + '/teams/' + teamID + '/actions');
+  },
+
   getActions: function(teamID, boardID){
     return fetch(API_URL + '/teams/'+ teamID +'/boards/'+ boardID +'/actions');
   },
+
   createAction: function(teamID, boardID, action){
     return fetch(API_URL + '/teams/'+ teamID +'/boards/'+ boardID +'/actions', {
       method: 'post',
