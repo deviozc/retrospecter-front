@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 import BoardActionsCreator from '../actions/BoardActionsCreator';
 import BoardStore from '../stores/BoardStore';
+import TeamStore from '../stores/TeamStore';
 
 require('styles/Boards.css');
 
@@ -47,15 +48,16 @@ let BoardItem = React.createClass({
   }
 });
 
-let getStateFromStore = () => {
+let getStateFromStore = (teamID) => {
   return {
-    boards: BoardStore.getAll()
+    boards: BoardStore.getAll(),
+    team: TeamStore.getTeam(teamID) || {}
   };
 }
 
 let Boards = React.createClass({
   getInitialState() {
-    return getStateFromStore();
+    return getStateFromStore(this.props.params.id);
   },
 
   componentDidMount() {
@@ -77,7 +79,7 @@ let Boards = React.createClass({
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12">
-              <h2>Team Name</h2>
+              <h2>{this.state.team.name} boards</h2>
               <hr className="small" />
               </div>
               <div className="col-lg-12 text-right ">

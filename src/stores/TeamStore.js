@@ -19,6 +19,17 @@ let teamStore = {
   },
   getTeams: function(){
     return _teams;
+  },
+  getTeam: function(id){
+    var result;
+    _teams.some(function(team){
+      if(team._id === id){
+        result = team;
+        return true;
+      }
+      return false;
+    });
+    return result;
   }
 };
 AppDispatcher.register(
