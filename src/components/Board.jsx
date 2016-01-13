@@ -1,6 +1,6 @@
 'use strict';
 
-require('styles/Board.css');
+import 'styles/Board.css';
 
 import React from 'react';
 import Modal from 'react-modal';

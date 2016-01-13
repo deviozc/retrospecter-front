@@ -1,12 +1,13 @@
 'use strict';
 
+import 'styles/Summary.css';
 import React from 'react';
 
 import ActionItemAction from '../actions/ActionItemAction';
 import TeamAction from '../actions/TeamAction';
 import TeamStore from '../stores/TeamStore';
 import ActionStore from '../stores/ActionItemStore';
-require('styles/Summary.css');
+
 let getStateFromStore = (teamId) => {
   return {
     team: TeamStore.getTeam(teamId),

@@ -1,8 +1,8 @@
 'use strict';
 
-import React from 'react';
+import 'styles/Team.css';
 
-require('styles/Team.css');
+import React from 'react';
 
 import TeamStore from '../stores/TeamStore';
 import teamConstants from '../constants/team-constants';

@@ -1,10 +1,11 @@
-require('normalize.css');
-require('styles/App.css');
+'use strict';
+
+import 'styles/App.css';
+import 'normalize.css';
 
 import React from 'react';
-import { Link } from 'react-router'
-let yeomanImage = require('../images/yeoman.png');
-let ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class AppComponent extends React.Component {
   constructor(props) {
